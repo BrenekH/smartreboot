@@ -1,3 +1,9 @@
+General:
+  * Storage locations:
+     * Configuration: /etc/smartreboot/smartreboot.conf
+     * Block scripts: /etc/smartreboot/blockchecks/
+     * Reboot required scripts: /etc/smartreboot/rebootchecks/
+
 Daemon:
   - Uses:
      * Check for reboot by running the reboot required scripts
