@@ -1,0 +1,12 @@
+[Unit]
+Description=Smart Reboot Daemon
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/usr/sbin/smartrebootd
+
+[Install]
+WantedBy=multi-user.target
