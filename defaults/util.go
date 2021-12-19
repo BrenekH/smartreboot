@@ -14,11 +14,17 @@ func runScriptsInDir(dir string) []int {
 
 	codes := make([]int, 0)
 	for _, v := range filtered {
+		fmt.Printf("Running '%v'\n", v)
+
 		err := exec.Command(v).Run()
+		if err == nil {
+			codes = append(codes, 0)
+		}
+
 		if exiterr, ok := err.(interface{ ExitCode() int }); ok {
 			codes = append(codes, exiterr.ExitCode())
-		} else {
-			fmt.Printf("error running script '%v': %v", v, err)
+		} else if err != nil {
+			fmt.Printf("error running script '%v': %v\n", v, err)
 		}
 	}
 
@@ -45,10 +51,9 @@ func discoverFilesInDir(dir string) []string {
 func filterNonExecutables(toFilter []string) []string {
 	filtered := make([]string, 0)
 
-	for _, i := range toFilter {
-		fileExt := filepath.Ext(i)
-		if isExecutable(fileExt) {
-			filtered = append(filtered, i)
+	for _, v := range toFilter {
+		if isExecutable(v) {
+			filtered = append(filtered, v)
 		}
 	}
 	return filtered
@@ -57,6 +62,7 @@ func filterNonExecutables(toFilter []string) []string {
 func isExecutable(file string) bool {
 	fInfo, err := os.Stat(file)
 	if err != nil {
+		fmt.Println(err)
 		return false // Silently swallow error
 	}
 

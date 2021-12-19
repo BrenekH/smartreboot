@@ -1,6 +1,9 @@
 package defaults
 
-import "os/exec"
+import (
+	"fmt"
+	"os/exec"
+)
 
 type Rebooter struct{}
 
@@ -10,6 +13,8 @@ func (r Rebooter) Reboot() error {
 	// but that makes us responsible for ensuring that all programs are shutdown properly
 	// (using sync(2) apparently?). Instead of dealing with that, I'd rather, at least for
 	// now, just call the shutdown command which should take care of all of that for us.
+
+	fmt.Println("Rebooting")
 
 	return exec.Command("shutdown", "-r", "+1").Run()
 }

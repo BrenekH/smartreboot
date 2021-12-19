@@ -23,16 +23,17 @@ func run(waitMinutes int, rc smartautoreboot.RebootChecker, bc smartautoreboot.B
 
 mainLoop:
 	for {
-		select {
-		case <-ctx.Done():
-			break mainLoop
-		case <-time.After(time.Minute * time.Duration(waitMinutes)):
-		}
-
 		if rc.IsRebootRequired() && !bc.IsRebootBlocked() {
 			if err := r.Reboot(); err != nil {
 				panic(err)
 			}
+			break
+		}
+
+		select {
+		case <-ctx.Done():
+			break mainLoop
+		case <-time.After(time.Minute * time.Duration(waitMinutes)):
 		}
 	}
 }
