@@ -2,6 +2,8 @@ package defaults
 
 type BlockChecker struct{}
 
+// IsRebootBlocked returns true if any of the executable scripts in /etc/smartreboot/blockchecks
+// returns a non-zero exit code, otherwise false is returned.
 func (b BlockChecker) IsRebootBlocked() bool {
 	codes := runScriptsInDir("/etc/smartreboot/blockchecks")
 
