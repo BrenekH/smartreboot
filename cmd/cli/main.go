@@ -65,15 +65,18 @@ Commands:
 
 func rebootCommand(force bool) {
 	if !(defaults.RebootChecker{}.IsRebootRequired()) {
+		fmt.Println("No reboot is required. If you still want to reboot the system, use 'shutdown -r'.")
 		return
 	}
 
 	if !force {
 		if (defaults.BlockChecker{}.IsRebootBlocked()) {
+			fmt.Println("A reboot is required but one or more scripts blocked it.")
 			return
 		}
 	}
 
+	fmt.Println("Rebooting")
 	err := defaults.Rebooter{}.Reboot()
 	if err != nil {
 		panic(err)
