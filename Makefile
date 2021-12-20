@@ -26,6 +26,7 @@ install:
 	mkdir -p $(DESTDIR)/etc/smartreboot/blockchecks
 
 # Other files
+	install -Dm644 resources/conf-template.conf -T $(DESTDIR)/etc/smartreboot/smartreboot.conf
 	install -Dm644 resources/systemd.service -T $(DESTDIR)/usr/lib/systemd/system/smartrebootd.service
 
 	@echo "Smart Reboot is now installed"

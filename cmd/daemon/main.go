@@ -15,7 +15,12 @@ func main() {
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, os.Kill)
 	defer cancel()
 
-	run(1, defaults.RebootChecker{}, defaults.BlockChecker{}, defaults.Rebooter{}, ctx)
+	conf, err := smartautoreboot.ParseConfFile("/etc/smartreboot/smartreboot.conf")
+	if err != nil {
+		panic(err)
+	}
+
+	run(conf.CheckInterval, defaults.RebootChecker{}, defaults.BlockChecker{}, defaults.Rebooter{}, ctx)
 }
 
 func run(waitMinutes int, rc smartautoreboot.RebootChecker, bc smartautoreboot.BlockChecker, r smartautoreboot.Rebooter, ctx context.Context) {
