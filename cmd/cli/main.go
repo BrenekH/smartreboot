@@ -95,11 +95,11 @@ func printCodes(dir string) {
 	for _, v := range filtered {
 		err := exec.Command(v).Run()
 		if err == nil {
-			fmt.Printf("\t%v\t0\n", v)
+			fmt.Printf("\t%v\t\t0\n", v)
 		}
 
 		if exiterr, ok := err.(interface{ ExitCode() int }); ok {
-			fmt.Printf("\t%v\t%v\n", v, exiterr.ExitCode())
+			fmt.Printf("\t%v\t\t%v\n", v, exiterr.ExitCode())
 		} else if err != nil {
 			fmt.Printf("\terror running script '%v': %v\n", v, err)
 		}
