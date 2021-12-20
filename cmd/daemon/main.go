@@ -25,7 +25,16 @@ func main() {
 	stdoutHandler.SetLevel(conf.LogLevel)
 	mainLogger.AddHandler(&stdoutHandler)
 
-	run(conf.CheckInterval, defaults.RebootChecker{}, defaults.BlockChecker{}, defaults.Rebooter{}, mainLogger, ctx)
+	rebootCheckerLogger := logange.NewLogger("reboot_checker")
+	rebootCheckerLogger.AddParent(&mainLogger)
+
+	blockCheckerLogger := logange.NewLogger("block_checker")
+	blockCheckerLogger.AddParent(&mainLogger)
+
+	rebooterLogger := logange.NewLogger("rebooter")
+	rebooterLogger.AddParent(&mainLogger)
+
+	run(conf.CheckInterval, defaults.RebootChecker{Logger: blockCheckerLogger}, defaults.BlockChecker{Logger: blockCheckerLogger}, defaults.Rebooter{Logger: rebooterLogger}, mainLogger, ctx)
 }
 
 func run(waitMinutes int, rc smartautoreboot.RebootChecker, bc smartautoreboot.BlockChecker, r smartautoreboot.Rebooter, logger logange.Logger, ctx context.Context) {

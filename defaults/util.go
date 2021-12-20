@@ -14,7 +14,6 @@ func runScriptsInDir(dir string) []int {
 
 	codes := make([]int, 0)
 	for _, v := range filtered {
-		fmt.Printf("Running '%v'\n", v)
 
 		err := exec.Command(v).Run()
 		if err == nil {

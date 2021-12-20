@@ -1,11 +1,14 @@
 package defaults
 
 import (
-	"fmt"
 	"os/exec"
+
+	"github.com/BrenekH/logange"
 )
 
-type Rebooter struct{}
+type Rebooter struct {
+	Logger logange.Logger
+}
 
 // Reboot "safely" restarts the system.
 func (r Rebooter) Reboot() error {
@@ -14,7 +17,7 @@ func (r Rebooter) Reboot() error {
 	// (using sync(2) apparently?). Instead of dealing with that, I'd rather, at least for
 	// now, just call the shutdown command which should take care of all of that for us.
 
-	fmt.Println("Rebooting")
+	r.Logger.Info("Rebooting")
 
 	return exec.Command("shutdown", "-r", "+1").Run()
 }
