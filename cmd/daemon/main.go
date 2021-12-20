@@ -2,11 +2,11 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"os"
 	"os/signal"
 	"time"
 
+	"github.com/BrenekH/logange"
 	smartautoreboot "github.com/BrenekH/smart-auto-reboot"
 	"github.com/BrenekH/smart-auto-reboot/defaults"
 )
@@ -20,11 +20,16 @@ func main() {
 		panic(err)
 	}
 
-	run(conf.CheckInterval, defaults.RebootChecker{}, defaults.BlockChecker{}, defaults.Rebooter{}, ctx)
+	mainLogger := logange.NewLogger("main")
+	stdoutHandler := logange.NewStdoutHandler()
+	stdoutHandler.SetLevel(conf.LogLevel)
+	mainLogger.AddHandler(&stdoutHandler)
+
+	run(conf.CheckInterval, defaults.RebootChecker{}, defaults.BlockChecker{}, defaults.Rebooter{}, mainLogger, ctx)
 }
 
-func run(waitMinutes int, rc smartautoreboot.RebootChecker, bc smartautoreboot.BlockChecker, r smartautoreboot.Rebooter, ctx context.Context) {
-	fmt.Println("smartrebootd started")
+func run(waitMinutes int, rc smartautoreboot.RebootChecker, bc smartautoreboot.BlockChecker, r smartautoreboot.Rebooter, logger logange.Logger, ctx context.Context) {
+	logger.Info("smartrebootd started")
 
 mainLoop:
 	for {
