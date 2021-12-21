@@ -125,6 +125,7 @@ changelog:
 release:
   draft: true
   prerelease: auto
+  name_template: "Version {{.Version}}"
 
 announce:
   skip: true
