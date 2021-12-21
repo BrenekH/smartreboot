@@ -12,22 +12,20 @@ This is accomplished by using user-defined scripts in `/etc/smartreboot/rebootch
 
 Smart Reboot was designed as a way to confidently let a server handle its own rebooting while not compromising the work being done.
 
-For example:
-
-A home media aficionado doesn't want their Jellyfin server to restart itself while a stream is currently playing, but updates to the kernel still require that the machine be rebooted once in a while.
-Instead of requiring the manual intervention of the sysadmin, Smart Reboot can be configured to reboot when the system needs it, but only when the Jellyfin instance is idle.
+**For example:** A home media aficionado doesn't want their Jellyfin server to restart itself while a stream is currently playing, but updates to the kernel still require that the machine be rebooted once in a while.
+Instead of requiring the manual intervention of the sysadmin, Smart Reboot can be configured to reboot when the system needs to, but only when the Jellyfin instance is idle.
 
 ## Installing
 
-## Debian (and derivatives)
+### Debian (and derivatives)
 
-At this time, Smart Reboot must be installed on Debian using the manual instructions.
+At this time, Smart Reboot must be installed on Debian using the [manual instructions](#manual-installation).
 
 We are working on packaging a `.deb` for distribution.
 
-## Arch Linux (and derivatives)
+### Arch Linux (and derivatives)
 
-At this time, Smart Reboot must be installed on Arch Linux using the manual instructions.
+At this time, Smart Reboot must be installed on Arch Linux using the [manual instructions](#manual-installation).
 
 We are working on submitting a `PKGBUILD` to the AUR for distribution.
 
