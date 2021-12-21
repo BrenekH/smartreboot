@@ -5,14 +5,14 @@
 
 ## What?
 
-Smart Reboot is a daemon(`smartrebootd`) and CLI(`smartreboot`) that allow for a unix machine to be rebooted without interrupting any work that may be happening at the current time.
-This is accomplished by using user-defined scripts in `/etc/smartreboot/rebootchecks` and `/etc/smartreboot/blockchecks` to determine when a reboot is required and if it can accomplished at the current time.
+Smart Reboot is a daemon(`smartrebootd`) and CLI(`smartreboot`) that allow for a Linux machine to be rebooted without interrupting any work that may be happening at the current time.
+This is accomplished by using user-defined scripts to determine when a reboot is required and if it can accomplished at the current time.
 
 ## Why?
 
 Smart Reboot was designed as a way to confidently let a server handle its own rebooting while not compromising the work being done.
 
-**For example:** A home media aficionado doesn't want their Jellyfin server to restart itself while a stream is currently playing, but updates to the kernel still require that the machine be rebooted once in a while.
+**For example:** A Jellyfin server shouldn't restart itself while a stream is currently playing, but updates to the kernel and other services still require that the machine be rebooted once in a while.
 Instead of requiring the manual intervention of the sysadmin, Smart Reboot can be configured to reboot when the system needs to, but only when the Jellyfin instance is idle.
 
 ## Installing
