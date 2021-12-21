@@ -22,7 +22,7 @@ install:
 	install -Dsm755 build/smartreboot -T $(DESTDIR)/usr/bin/smartreboot
 
 # Default scripts
-	install -Dm755 resources/00-ubuntu-reboot-required -T $(DESTDIR)/etc/smartreboot/rebootchecks/00-ubuntu-reboot-required
+	install -Dm755 resources/debian-reboot-required -T $(DESTDIR)/etc/smartreboot/rebootchecks/00-debian-reboot-required
 	mkdir -p $(DESTDIR)/etc/smartreboot/blockchecks
 
 # Other files
