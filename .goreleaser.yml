@@ -5,8 +5,7 @@ before:
     - go mod tidy
 
 builds:
-  -
-    id: "smartreboot"
+  - id: "smartreboot"
     env:
       - CGO_ENABLED=0
     goos:
@@ -22,8 +21,7 @@ builds:
     main: ./cmd/cli/main.go
     binary: "smartreboot"
 
-  -
-    id: "smartrebootd"
+  - id: "smartrebootd"
     env:
       - CGO_ENABLED=0
     goos:
@@ -42,6 +40,11 @@ builds:
 archives:
   - replacements:
       386: i386
+
+    files:
+      - README.md
+      - LICENSE
+      - resources/*
 
 nfpms:
   -
