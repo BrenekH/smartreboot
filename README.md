@@ -84,3 +84,8 @@ Simply run `smartreboot check` to view each script and its exit code.
 ## License
 
 Smart Reboot is licensed under the GNU General Public License Version 3, a copy of which can be found in [LICENSE](https://github.com/BrenekH/smartreboot/blob/master/LICENSE).
+
+## Future plans
+
+- Allow community scripts to be uploaded so that others don't need to rewrite common scripts.
+  - Add some sort of download command to `smartreboot` which can automatically download and enable these community scripts.
