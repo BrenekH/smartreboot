@@ -48,8 +48,8 @@ If everything worked, you should now be able to use Smart Reboot!
 ### Basics
 
 In order to determine whether or not to reboot, Smart Reboot runs the scripts located in `/etc/smartreboot/rebootchecks` and `/etc/smartreboot/blockchecks` and evaluates the exit codes.
-If any of the reboot checks returns a 0 exit code, the machine is considered to need a reboot.
-However, the reboot can be blocked if any one of the block checks returns an exit code that is not 0, which indicates that the system is still working on something and cannot be rebooted at this time.
+If any of the reboot checks return a 0 exit code, the machine is considered to need a reboot.
+However, the reboot can be blocked if any one of the block checks return an exit code that is not 0, which indicates that the system is still working on something and cannot be rebooted at this time.
 
 Each of the scripts must be a valid "executable" which includes, but isn't limited to, the following:
 
@@ -77,6 +77,6 @@ If you want to skip the reboot checks, you can use the `--force, -f` flag which 
 
 ### Other CLI tricks
 
-In addition to the `reboot` command, `smartreboot` can show the current status of the executable scripts that you have setup.
+In addition to the `reboot` command, `smartreboot` can show the current status of the executable scripts that you have setup, which is very useful for setting up the script directories.
 
 Simply run `smartreboot check` to view each script and its exit code.
