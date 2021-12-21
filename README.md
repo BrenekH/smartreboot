@@ -80,3 +80,7 @@ If you want to skip the reboot checks, you can use the `--force, -f` flag which 
 In addition to the `reboot` command, `smartreboot` can show the current status of the executable scripts that you have setup, which is very useful for setting up the script directories.
 
 Simply run `smartreboot check` to view each script and its exit code.
+
+## License
+
+Smart Reboot is licensed under the GNU General Public License Version 3, a copy of which can be found in [LICENSE](https://github.com/BrenekH/smartreboot/blob/master/LICENSE).
