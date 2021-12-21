@@ -119,5 +119,9 @@ changelog:
       - '^docs:'
       - '^test:'
 
+release:
+  draft: true
+  prerelease: auto
+
 announce:
   skip: true
