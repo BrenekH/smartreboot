@@ -1,4 +1,4 @@
-package smartautoreboot
+package smartreboot
 
 type RebootChecker interface {
 	IsRebootRequired() bool

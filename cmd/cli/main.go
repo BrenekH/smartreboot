@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/BrenekH/smart-auto-reboot/defaults"
+	"github.com/BrenekH/smartreboot/defaults"
 	"github.com/cornfeedhobo/pflag"
 )
 
@@ -104,6 +104,7 @@ func printCodes(dir string) {
 		if exiterr, ok := err.(interface{ ExitCode() int }); ok {
 			fmt.Printf("\t%v\t\t%v\n", v, exiterr.ExitCode())
 		} else if err != nil {
+			// TODO: Ensure exit code is displayed at very end of terminal
 			fmt.Printf("\terror running script '%v': %v\n", v, err)
 		}
 	}

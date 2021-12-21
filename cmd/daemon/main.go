@@ -7,15 +7,15 @@ import (
 	"time"
 
 	"github.com/BrenekH/logange"
-	smartautoreboot "github.com/BrenekH/smart-auto-reboot"
-	"github.com/BrenekH/smart-auto-reboot/defaults"
+	"github.com/BrenekH/smartreboot"
+	"github.com/BrenekH/smartreboot/defaults"
 )
 
 func main() {
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, os.Kill)
 	defer cancel()
 
-	conf, err := smartautoreboot.ParseConfFile("/etc/smartreboot/smartreboot.conf")
+	conf, err := smartreboot.ParseConfFile("/etc/smartreboot/smartreboot.conf")
 	if err != nil {
 		panic(err)
 	}
@@ -37,7 +37,7 @@ func main() {
 	run(conf.CheckInterval, defaults.RebootChecker{Logger: blockCheckerLogger}, defaults.BlockChecker{Logger: blockCheckerLogger}, defaults.Rebooter{Logger: rebooterLogger}, mainLogger, ctx)
 }
 
-func run(waitMinutes int, rc smartautoreboot.RebootChecker, bc smartautoreboot.BlockChecker, r smartautoreboot.Rebooter, logger logange.Logger, ctx context.Context) {
+func run(waitMinutes int, rc smartreboot.RebootChecker, bc smartreboot.BlockChecker, r smartreboot.Rebooter, logger logange.Logger, ctx context.Context) {
 	logger.Info("smartrebootd started")
 
 mainLoop:

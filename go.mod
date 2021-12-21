@@ -1,4 +1,4 @@
-module github.com/BrenekH/smart-auto-reboot
+module github.com/BrenekH/smartreboot
 
 go 1.17
 
