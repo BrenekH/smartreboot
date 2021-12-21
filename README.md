@@ -31,11 +31,11 @@ We are working on submitting a `PKGBUILD` to the AUR for distribution.
 
 ### Manual installation
 
-You will need a Go compiler(>=1.17) and the Make command(preferably GNU Make) to begin.
+You will need a [Go compiler](https://go.dev)(>=1.17) and the Make command(preferably [GNU Make](https://www.gnu.org/software/make/)) to begin.
 
-First clone `BrenekH/smartreboot` like so: `git clone https://github.com/BrenekH/smartreboot.git`.
+First, clone `BrenekH/smartreboot` like so: `git clone https://github.com/BrenekH/smartreboot.git`.
 
-Then change into the directory containing the source files: `cd smartreboot`.
+Then, change into the directory containing the source files: `cd smartreboot`.
 
 Next, build using Make: `make`.
 
