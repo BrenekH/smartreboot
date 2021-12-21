@@ -1,7 +1,7 @@
 # Smart Reboot
 
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/BrenekH/smartreboot)
-[![GitHub](https://img.shields.io/github/license/BrenekH/smartreboot)](https://github.com/BrenekH/smartreboot/blob/master/LICENSE)
+[![GitHub License](https://img.shields.io/github/license/BrenekH/smartreboot)](https://github.com/BrenekH/smartreboot/blob/master/LICENSE)
 
 ## What?
 
