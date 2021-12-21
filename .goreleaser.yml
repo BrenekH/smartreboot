@@ -1,0 +1,123 @@
+project_name: SmartReboot
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  -
+    id: "smartreboot"
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+    goarch:
+      - 386
+      - amd64
+      - arm64
+      - arm
+    goarm:
+      - 6
+      - 7
+    main: ./cmd/cli/main.go
+    binary: "smartreboot"
+
+  -
+    id: "smartrebootd"
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+    goarch:
+      - 386
+      - amd64
+      - arm64
+      - arm
+    goarm:
+      - 6
+      - 7
+    main: ./cmd/daemon/main.go
+    binary: "smartrebootd"
+
+archives:
+  - replacements:
+      386: i386
+
+nfpms:
+  -
+    replacements:
+      386: i386
+
+    vendor: Brenek Harrison
+
+    homepage: https://github.com/BrenekH/smartreboot#README
+
+    maintainer: Brenek Harrison <brenekharrison@gmail.com>
+
+    description: Reboot a machine without interrupting ongoing work.
+
+    license: GPLv3
+
+    formats:
+      - deb
+      - rpm
+
+    bindir: /usr/bin
+
+    release: 1
+
+    section: default
+
+    priority: extra
+
+    contents:
+      - dst: /etc/smartreboot
+        type: dir
+        file_info:
+          mode: 0755
+
+      - dst: /etc/smartreboot/rebootchecks
+        type: dir
+        file_info:
+          mode: 0755
+
+      - dst: /etc/smartreboot/blockchecks
+        type: dir
+        file_info:
+          mode: 0755
+
+      - src: ./resources/systemd.service
+        dst: /usr/lib/systemd/system/smartrebootd.service
+
+      - src: ./resources/conf-template.conf
+        dst: /etc/smartreboot/smartreboot.conf
+        type: config
+
+      - src: ./resources/debian-reboot-required
+        dst: /etc/smartreboot/rebootchecks/00-debain-reboot-required
+        packager: deb
+
+    # Scripts to execute during the installation of the package.
+    # Keys are the possible targets during the installation process
+    # Values are the paths to the scripts which will be executed
+    # scripts:
+    #   preinstall: "scripts/preinstall.sh"
+    #   postinstall: "scripts/postinstall.sh"
+    #   preremove: "scripts/preremove.sh"
+    #   postremove: "scripts/postremove.sh"
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+
+announce:
+  skip: true
