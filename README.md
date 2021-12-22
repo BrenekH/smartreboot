@@ -19,15 +19,11 @@ Instead of requiring the manual intervention of the sysadmin, Smart Reboot can b
 
 ### Debian (and derivatives)
 
-At this time, Smart Reboot must be installed on Debian using the [manual instructions](#manual-installation).
-
-We are working on packaging a `.deb` for distribution.
+Download and install the `.deb` file for your architecture from the [latest release](https://github.com/BrenekH/smartreboot/releases/latest).
 
 ### Arch Linux (and derivatives)
 
-At this time, Smart Reboot must be installed on Arch Linux using the [manual instructions](#manual-installation).
-
-We are working on submitting a `PKGBUILD` to the AUR for distribution.
+SmartReboot is available on the [Arch User Repository](https://aur.archlinux.org) as the [smartreboot package](https://aur.archlinux.org/packages/smartreboot).
 
 ### Manual installation
 
