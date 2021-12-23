@@ -1,8 +1,0 @@
-#!/bin/bash
-
-if [[ ! $(curl --silent http://192.168.0.134:32400/status/sessions | grep -c "MediaContainer size=\"0\"") -eq 0 ]]
-then
-  exit 0
-fi
-
-exit 1
