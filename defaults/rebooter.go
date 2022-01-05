@@ -19,5 +19,5 @@ func (r Rebooter) Reboot() error {
 
 	r.Logger.Info("Rebooting")
 
-	return exec.Command("shutdown", "-r", "+1").Run()
+	return exec.Command("shutdown", "-r", "now").Run()
 }
