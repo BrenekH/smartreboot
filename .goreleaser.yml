@@ -11,13 +11,15 @@ builds:
     goos:
       - linux
     goarch:
-      - 386
+      - "386"
       - amd64
       - arm64
       - arm
     goarm:
-      - 6
-      - 7
+      - "6"
+      - "7"
+    ldflags:
+      - -X "main.Version={{.Version}}"
     main: ./cmd/cli/main.go
     binary: "smartreboot"
 
@@ -27,13 +29,13 @@ builds:
     goos:
       - linux
     goarch:
-      - 386
+      - "386"
       - amd64
       - arm64
       - arm
     goarm:
-      - 6
-      - 7
+      - "6"
+      - "7"
     main: ./cmd/daemon/main.go
     binary: "smartrebootd"
 
@@ -47,8 +49,7 @@ archives:
       - resources/*
 
 nfpms:
-  -
-    replacements:
+  - replacements:
       386: i386
 
     vendor: Brenek Harrison
@@ -67,7 +68,7 @@ nfpms:
 
     bindir: /usr/bin
 
-    release: 1
+    release: "1"
 
     section: default
 
@@ -110,7 +111,7 @@ nfpms:
     #   postremove: "scripts/postremove.sh"
 
 checksum:
-  name_template: 'checksums.txt'
+  name_template: "checksums.txt"
 
 snapshot:
   name_template: "{{ incpatch .Version }}-next"
@@ -119,8 +120,8 @@ changelog:
   sort: asc
   filters:
     exclude:
-      - '^docs:'
-      - '^test:'
+      - "^docs:"
+      - "^test:"
 
 release:
   draft: true
