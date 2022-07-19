@@ -18,7 +18,7 @@ docs:
 
 install:
 # Binaries
-	install -Dsm755 build/smartrebootd -T $(DESTDIR)/usr/sbin/smartrebootd
+	install -Dsm755 build/smartrebootd -T $(DESTDIR)/usr/bin/smartrebootd
 	install -Dsm755 build/smartreboot -T $(DESTDIR)/usr/bin/smartreboot
 
 # Default scripts
