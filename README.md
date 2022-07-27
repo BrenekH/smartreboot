@@ -58,7 +58,7 @@ Each of the scripts must be a valid "executable" which includes, but isn't limit
 ### Automatic mode (via the daemon)
 
 Smart Reboot provides a daemon called `smartrebootd` who's startup and shutdown should be managed by your distro's init system(most likely SystemD).
-Since the SystemD service should already be installed, you can run `sudo systemctl enable smartrebootd && sudo systemctl start smartrebootd` to start the Smart Reboot Daemon.
+Since the SystemD service should already be installed, you can run `sudo systemctl enable --now smartrebootd` to start the Smart Reboot Daemon.
 If you use a different init system, we welcome any contributions to add support.
 
 By default, `smartrebootd` only checks for reboots every 15 minutes.
