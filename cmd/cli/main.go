@@ -84,10 +84,10 @@ func rebootCommand(force bool) {
 }
 
 func checkCommand() {
-	fmt.Println("Reboot Checks:")
+	fmt.Println("Reboot Checks (any 0 triggers a reboot):")
 	printCodes("/etc/smartreboot/rebootchecks")
 
-	fmt.Println("\nBlock Checks:")
+	fmt.Println("\nBlock Checks (any non-zero blocks a reboot):")
 	printCodes("/etc/smartreboot/blockchecks")
 }
 
